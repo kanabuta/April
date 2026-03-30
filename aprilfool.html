@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loading...</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
+  overflow:hidden;
+  font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+}
+
+/* 背景の光エフェクト */
+.bg-glow{
+  position:absolute;
+  width:200%;
+  height:200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+  animation: rotateGlow 10s linear infinite;
+}
+
+@keyframes rotateGlow{
+  from{ transform: rotate(0deg);}
+  to{ transform: rotate(360deg);}
+}
+
+/* メインテキスト */
+.surprise{
+  position:relative;
+  text-align:center;
+  color:#fff;
+  opacity:0;
+  transform:scale(0.5);
+  animation: textBoom 1.2s cubic-bezier(.68,-0.55,.27,1.55) forwards;
+}
+
+/* メインタイトル */
+.surprise h1{
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight:800;
+  letter-spacing:2px;
+  background: linear-gradient(90deg, #00f5ff, #ff00e0);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* サブテキスト */
+.surprise p{
+  margin-top:20px;
+  font-size:18px;
+  opacity:0.7;
+  letter-spacing:1px;
+}
+
+/* アニメーション */
+@keyframes textBoom{
+  0%{
+    opacity:0;
+    transform:scale(0.3) rotate(-10deg);
+  }
+  60%{
+    opacity:1;
+    transform:scale(1.2) rotate(3deg);
+  }
+  100%{
+    transform:scale(1) rotate(0);
+    opacity:1;
+  }
+}
+
+/* フラッシュ演出 */
+.flash{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:white;
+  opacity:0;
+  animation: flash 0.4s ease;
+}
+
+@keyframes flash{
+  0%{ opacity:1; }
+  100%{ opacity:0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg-glow"></div>
+<div class="flash"></div>
+
+<div class="surprise">
+  <h1>Happy April Fool</h1>
+  <p>だまされた？😏</p>
+</div>
+
+<script>
+// 軽く遅延して「読み込み感」出す
+document.querySelector(".surprise").style.animationDelay = "0.5s";
+</script>
+
+</body>
+</html>
